@@ -1,4 +1,5 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## To install new project command is --> npx create-react-app your-app-name --template typescript
 
 ## Available Scripts
 
