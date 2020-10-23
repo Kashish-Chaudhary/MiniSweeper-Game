@@ -1,6 +1,6 @@
-
+// for emoji { windows + ; }
 import "./App.scss"
-import React,{ useState,useEffect, Fragment } from 'react';
+import React,{ useState,useEffect } from 'react';
 import NumberDisplay from "../NumberDisplay"
 import {generateCells,openMultipleCells} from "../../utils"
 import {Button} from '../Button/index'
@@ -26,26 +26,26 @@ const App: React.FC= ()=> {   // React.FC tells in ts that it uis a functional c
         if(!hasLost)
         setFace(Face.smile)
         }
-    // useEffect(()=>{
-    //     const handleMouseDown = () =>{
-    //         setFace(Face.oh)
-    //     }
-    //     const handleMouseUp = () =>{
-    //         setFace(Face.smile)
-    //     }
+    useEffect(()=>{
+        const handleMouseDown = () =>{
+            setFace(Face.oh)
+        }
+        const handleMouseUp = () =>{
+            setFace(Face.smile)
+        }
 
-    //     document.getElementById('Body')?.addEventListener('mousedown',handleMouseDown);
-    //     document.getElementById('Body')?.addEventListener('mouseup',handleMouseUp);
+        document.getElementById('Body')?.addEventListener('mousedown',handleMouseDown);
+        document.getElementById('Body')?.addEventListener('mouseup',handleMouseUp);
         
-    //     // window.addEventListener('mousedown',handleMouseDown);
-    //     // window.addEventListener('mouseup',handleMouseUp)
-    //     // return ()=>{
-    //     //     r1;
-    //     //     r;
-    //     // // window.removeEventListener('mousedown',handleMouseDown);
-    //     // // window.removeEventListener('mouseup',handleMouseUp)
-    //     // }
-    // },[])
+        // window.addEventListener('mousedown',handleMouseDown);
+        // window.addEventListener('mouseup',handleMouseUp)
+        // return ()=>{
+        //     r1;
+        //     r;
+        // // window.removeEventListener('mousedown',handleMouseDown);
+        // // window.removeEventListener('mouseup',handleMouseUp)
+        // }
+    },[])
 
 
 
@@ -145,7 +145,6 @@ const App: React.FC= ()=> {   // React.FC tells in ts that it uis a functional c
    
    
    
-   
     const renderCells = ():React.ReactNode =>{
         return cells.map((row,rowIndex)=>row.map((cell,colIndex)=><Button key={colIndex} state={cell.state}  value={cell.value } red={cell.red} onClick={handleCellClick} onContext= {handleContext} row={rowIndex} col={colIndex}/>))
     } 
@@ -159,6 +158,7 @@ const App: React.FC= ()=> {   // React.FC tells in ts that it uis a functional c
             setBomb(10);
             setHasLost(false);
             setHasWon(false)
+            setFace(Face.smile)
         
     }
 
@@ -198,13 +198,14 @@ const App: React.FC= ()=> {   // React.FC tells in ts that it uis a functional c
             return cell;
         }))
     }
-    const r1="YOU LOST";
     return (
-       
+        
         <div className="App">
-            {hasLost?<Fragment>YOU LOST</Fragment>:''}
             <div className="Header">
+            
+
                 <NumberDisplay value={bombCounter}/>
+                
                 <div className="Face" onClick={handleFaceClick}>
                 <span>{face}</span>
                 </div>

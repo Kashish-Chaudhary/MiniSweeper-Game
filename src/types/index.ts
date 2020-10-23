@@ -20,7 +20,7 @@ export type CellType = {value:CellValue;state:CellState; red?:boolean};
 export enum Face{
     smile = '😁',
     oh = '😮',
-    lost = '😩',
+    lost = '🥵',
     won = '😎'
 
 }
